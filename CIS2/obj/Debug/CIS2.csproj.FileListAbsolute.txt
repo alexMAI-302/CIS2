@@ -7,3 +7,12 @@ C:\Users\Alex-Vaio\Desktop\CIS2\CIS2\obj\Debug\CIS2.csproj.GenerateResource.Cach
 C:\Users\Alex-Vaio\Desktop\CIS2\CIS2\obj\Debug\CIS2.exe
 C:\Users\Alex-Vaio\Desktop\CIS2\CIS2\obj\Debug\CIS2.pdb
 C:\Users\Alex-Vaio\Desktop\CIS2\CIS2\obj\Debug\CIS2.MainWindow.resources
+C:\Users\Alex-Vaio\Documents\GitHub\CIS2\CIS2\bin\Debug\CIS2.exe.config
+C:\Users\Alex-Vaio\Documents\GitHub\CIS2\CIS2\obj\Debug\CIS2.exe
+C:\Users\Alex-Vaio\Documents\GitHub\CIS2\CIS2\obj\Debug\CIS2.pdb
+C:\Users\Alex-Vaio\Documents\GitHub\CIS2\CIS2\bin\Debug\CIS2.exe
+C:\Users\Alex-Vaio\Documents\GitHub\CIS2\CIS2\bin\Debug\CIS2.pdb
+C:\Users\Alex-Vaio\Documents\GitHub\CIS2\CIS2\obj\Debug\CIS2.csprojResolveAssemblyReference.cache
+C:\Users\Alex-Vaio\Documents\GitHub\CIS2\CIS2\obj\Debug\CIS2.MainWindow.resources
+C:\Users\Alex-Vaio\Documents\GitHub\CIS2\CIS2\obj\Debug\CIS2.Properties.Resources.resources
+C:\Users\Alex-Vaio\Documents\GitHub\CIS2\CIS2\obj\Debug\CIS2.csproj.GenerateResource.Cache

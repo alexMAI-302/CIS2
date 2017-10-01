@@ -19,6 +19,7 @@ namespace CIS2
         {
             InitializeComponent();
             _TBtoken.Text = "BadRenMip1sNW8rbsHMU";
+            _dGW_weights.Visible = false;
         }
 
         /// <summary>
@@ -46,10 +47,21 @@ namespace CIS2
             _dGW.RowHeadersVisible = false;
             _dGW.ColumnHeadersVisible = false;
 
+            _dGW_weights.Visible = true;
+            _dGW_weights.RowCount = 1;
+            _dGW_weights.ColumnCount = n;
+            _dGW_weights.RowHeadersVisible = false;
+            _dGW_weights.ColumnHeadersVisible = false;
+            _dGW_weights.ReadOnly = true;
+            _dGW_weights.Rows[0].Height = 50;
+            _dGW_weights.Height = 60;
+
             for (int i = 0; i < n; i++)
             {
                 _dGW.Columns[i].Width = 50;
                 _dGW.Rows[i].Height = 50;
+                _dGW_weights.Columns[i].Width = 100;
+                _dGW_weights[i, 0].Value = 0;
             }
 
             for (int i = 0; i < n; i++)
@@ -154,12 +166,11 @@ namespace CIS2
                 DataContractJsonSerializer serializer = new DataContractJsonSerializer(result.GetType());
                 result = (Result)serializer.ReadObject(memory);
             }
-
-            string weights = string.Empty;
-            for (int i = 0; i < mtx.matrix.Count; i++)
-                weights += result.weight[i] + ",\n";
             
-            _rTB.Text = String.Format("Weights:\n{0}\nl_max: {1}\nconsistency index: {2}", weights, result.l_max, result.consistency_index);
+            for (int i = 0; i < mtx.matrix.Count; i++)
+                _dGW_weights[i, 0].Value = result.weight[i];
+            
+            _rTB.Text = String.Format("l_max: {0}\nconsistency index: {1}", result.l_max, result.consistency_index);
         }
     }
 }

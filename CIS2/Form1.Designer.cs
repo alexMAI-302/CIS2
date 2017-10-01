@@ -40,11 +40,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this._rTB = new System.Windows.Forms.RichTextBox();
+            this._dGW_weights = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.About.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dGW)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._dGW_weights)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -146,6 +149,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this._dGW_weights);
             this.groupBox2.Controls.Add(this._rTB);
             this.groupBox2.Location = new System.Drawing.Point(437, 132);
             this.groupBox2.Name = "groupBox2";
@@ -156,11 +161,29 @@
             // 
             // _rTB
             // 
-            this._rTB.Location = new System.Drawing.Point(7, 20);
+            this._rTB.Location = new System.Drawing.Point(9, 133);
             this._rTB.Name = "_rTB";
-            this._rTB.Size = new System.Drawing.Size(322, 309);
+            this._rTB.Size = new System.Drawing.Size(320, 87);
             this._rTB.TabIndex = 0;
             this._rTB.Text = "";
+            // 
+            // _dGW_weights
+            // 
+            this._dGW_weights.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this._dGW_weights.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._dGW_weights.Location = new System.Drawing.Point(9, 42);
+            this._dGW_weights.Name = "_dGW_weights";
+            this._dGW_weights.Size = new System.Drawing.Size(320, 75);
+            this._dGW_weights.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Weights:";
             // 
             // MainWindow
             // 
@@ -180,6 +203,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._dGW_weights)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -198,6 +223,8 @@
         private System.Windows.Forms.Button _btnGo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox _rTB;
+        private System.Windows.Forms.DataGridView _dGW_weights;
+        private System.Windows.Forms.Label label2;
 
     }
 }

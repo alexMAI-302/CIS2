@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Runtime.Serialization.Json;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -159,18 +160,58 @@ namespace CIS2
                     }
                 }
             }
-
-            Result result = new Result(mtx.matrix.Count);
-            using (MemoryStream memory = new MemoryStream(Encoding.UTF8.GetBytes(Result.GetJ(response))))
+            string id = (response.Replace(",", ":")).Split(':')[1];
+            int count = 0;
+            while (true)
             {
-                DataContractJsonSerializer serializer = new DataContractJsonSerializer(result.GetType());
-                result = (Result)serializer.ReadObject(memory);
+                Result result = new Result(mtx.matrix.Count);
+
+                string uri = String.Format("http://www.ws-dss.com/ws_jobs/{0}.json", id);
+                response = string.Empty;
+                
+                HttpWebRequest Outreq = (HttpWebRequest)WebRequest.Create(uri);
+                Outreq.Method = "GET";
+                Outreq.Headers.Add("user-token", _TBtoken.Text);
+
+                using (HttpWebResponse Outresp = (HttpWebResponse)Outreq.GetResponse())
+                {
+                    using (Stream OutrespStream = Outresp.GetResponseStream())
+                    {
+                        if (OutrespStream != null)
+                        {
+                            using (StreamReader sr = new StreamReader(OutrespStream))
+                            {
+                                response = sr.ReadToEnd();
+                                using (MemoryStream memory = new MemoryStream(Encoding.UTF8.GetBytes(Result.GetJ(response))))
+                                {
+                                    DataContractJsonSerializer serializer = new DataContractJsonSerializer(result.GetType());
+                                    try
+                                    {
+                                        result = (Result)serializer.ReadObject(memory);
+                                        for (int i = 0; i < mtx.matrix.Count; i++)
+                                            _dGW_weights[i, 0].Value = result.weight[i];
+
+                                        _rTB.Text = String.Format("l_max: {0}\nconsistency index: {1}", result.l_max, result.consistency_index);
+                                        return;
+                                    }
+                                    catch (Exception)
+                                    {
+                                        count++;
+                                        Thread.Sleep(count * 500);
+                                    }
+                                    
+
+                                }
+                            }
+                        }
+                    }
+                }
+                                
+
+                
             }
+
             
-            for (int i = 0; i < mtx.matrix.Count; i++)
-                _dGW_weights[i, 0].Value = result.weight[i];
-            
-            _rTB.Text = String.Format("l_max: {0}\nconsistency index: {1}", result.l_max, result.consistency_index);
         }
     }
 }
